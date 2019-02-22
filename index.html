@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+      
+$(document).ready(function(){
+  $("#btnSubmit").click(function(){
+    $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: "https://api.digitalocean.com/v2/droplets",
+    headers: {
+       'Authorization': "Bearer " + $.urlParam('token')
+    },
+    data: {
+	name:"ubuntu-ovpn3-s-1vcpu-1gb-lon1-01",
+	region: "lon1",
+	size: "s-1vcpu-1gb",
+	image: 33450917,
+	ssh_keys: [19963594, 19968901],
+	tags: ["vpn"]
+}
+}).done(function(data) { 
+    alert(JSON.stringify(data));
+});
+  });
+});
+$(document).ready(function(){
+  $("#btnDelete").click(function(){
+    $.ajax({
+    type: 'DELETE',
+    url: "https://api.digitalocean.com/v2/droplets?tag_name=vpn",
+    headers: {
+       'Authorization': "Bearer " + $.urlParam('token')
+    }
+}).done(function(data) { 
+    alert(JSON.stringify(data));
+});
+  });
+});
+	    $(document).ready(function() {
+		    $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: "https://api.digitalocean.com/v2/droplets",
+    headers: {
+	'Authorization': "Bearer " + $.urlParam('token')
+    }
+}).done(function(data) {
+	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
+});
+});		    
+    </script>
+  </head>
+  <h1>Hello, World</h1>
+  <input id = "btnSubmit" type="button" value="Create"/>
+  <input id = "btnDelete" type="button" value="Delete"/>
+	<span id="ip"></span>
+</html>
