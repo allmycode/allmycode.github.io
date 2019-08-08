@@ -49,6 +49,16 @@ $(document).ready(function(){
 });
 	    $(document).ready(function() {
 		    $.ajax({
+    type: 'OPTIONS',
+    dataType: 'json',
+    url: "https://api.digitalocean.com/v2/droplets",
+    headers: {
+	'Authorization': "Bearer " + $.urlParam('token')
+    }
+}).done(function(data) {
+
+});
+		    $.ajax({
     type: 'GET',
     dataType: 'json',
     url: "https://api.digitalocean.com/v2/droplets",
