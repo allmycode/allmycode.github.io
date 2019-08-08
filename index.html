@@ -51,10 +51,10 @@ $(document).ready(function(){
 		   $.ajax({
     type: 'GET',
     dataType: 'json',
-    crossDomain: true,
     url: "https://api.digitalocean.com/v2/droplets",
     headers: {
-	'Authorization': "Bearer " + $.urlParam('token')
+	'Authorization': "Bearer " + $.urlParam('token'),
+	    'Content-Type': 'application/json'
     }
 }).done(function(data) {
 	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
