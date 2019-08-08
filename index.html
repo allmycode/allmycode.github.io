@@ -54,7 +54,8 @@ $(document).ready(function(){
     url: "https://api.digitalocean.com/v2/droplets",
     headers: {
 	'Authorization': "Bearer " + $.urlParam('token'),
-	    'Content-Type': 'application/json'
+	    'Content-Type': 'application/json',
+	    "Accept": 'application/json',
     }
 }).done(function(data) {
 	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
