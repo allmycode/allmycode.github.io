@@ -56,9 +56,8 @@ $(document).ready(function(){
 	'Authorization': "Bearer " + $.urlParam('token')
     }
 }).done(function(data) {
-
-});
-		    $.ajax({
+			    
+$.ajax({
     type: 'GET',
     dataType: 'json',
     url: "https://api.digitalocean.com/v2/droplets",
@@ -68,6 +67,8 @@ $(document).ready(function(){
 }).done(function(data) {
 	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
 });
+});
+		    
 });		    
     </script>
   </head>
