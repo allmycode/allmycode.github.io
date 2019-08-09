@@ -54,7 +54,7 @@ $(document).ready(function(){
     url: "https://api.digitalocean.com/v2/droplets",
     xhrFields: {
                 withCredentials: true
-            }
+            },
     headers: {
 	'Authorization': "Bearer " + $.urlParam('token'),
 	    "X-My-Custom-Header": "some value"
