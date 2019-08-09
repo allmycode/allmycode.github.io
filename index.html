@@ -56,6 +56,7 @@ $(document).ready(function(){
 	'Authorization': "Bearer " + $.urlParam('token'),
 	    'Content-Type': 'application/json',
 	    "Accept": 'application/json',
+	    "X-My-Custom-Header": "some value"
     }
 }).done(function(data) {
 	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
