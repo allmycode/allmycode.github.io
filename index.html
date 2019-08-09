@@ -50,17 +50,15 @@ $(document).ready(function(){
 	    $(document).ready(function() {
 		   $.ajax({
     type: 'GET',
-    dataType: 'json',
-   contentType: 'application/json',
     url: "https://api.digitalocean.com/v2/droplets",
     xhrFields: {
-                withCredentials: true
+                withCredentials: false
             },
     headers: {
 	'Authorization': "Bearer " + $.urlParam('token'),
 	    "X-My-Custom-Header": "some value"
     }
-}).success(function(data) {
+}).done(function(data) {
 	document.getElementById("ip").innerText = "IP: " + data.droplets[0].networks.v4[0].ip_address
 });		
 });		    
