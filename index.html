@@ -51,6 +51,7 @@ $(document).ready(function(){
 		   $.ajax({
     type: 'GET',
     dataType: 'json',
+   contentType: 'application/json',
     url: "https://api.digitalocean.com/v2/droplets",
     xhrFields: {
                 withCredentials: true
